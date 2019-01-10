@@ -1,0 +1,116 @@
+<odoo>
+  <data>
+  <!-- model.name form view -->
+
+  <record id="model_name_view_form" model="ir.ui.view">
+  <field name="name">student.info.name.view.form</field>
+
+    <field name="model">student.info</field>
+
+    <field name="arch" type="xml">
+      <form string="">
+        <sheet>
+          <group>
+            <!-- Add your fields here -->
+            
+            <field name = "name"/>
+            <field name = "lnmae"/>
+            <field name = "class_grade"/>
+            <field name = "gender" widget="radio"/>
+            <!-- <field name = "female" widget="radio"/> -->
+            <field name = "roll_id"/>
+            
+          </group>
+          <notebook>
+            <page string="subject_line" mode='tree'>
+            <field name="subject_line">
+              <tree editable="bottom">       
+                  <field name="subject_names"/>
+              </tree>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+<record id="sale_view_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+             <xpath expr="//field[@name='payment_term_id']" position="before">
+                <field name="name"/>  
+                <field name="last_name"/>  
+    
+                </xpath>
+                </field>
+</record>
+
+
+<!-- model.name tree view -->
+<record id="model_name_view_tree" model="ir.ui.view">
+  <field name="name">student.info.view.tree</field>
+  <field name="model">student.info</field>
+  <field name="arch" type="xml">
+    <tree>
+      <!-- Add your fields here -->
+            <field name = "name"/>
+            <field name = "lnmae"/>
+            <field name = "class_grade"/>
+           <field name = "gender" widget="radio"/>
+            <field name = "roll_id"/>
+    </tree>
+  </field>
+</record>
+<!-- model.name search view-->
+<record id="searchmodel_name_view_search" model="ir.ui.view">
+  <field name="name">student.info.view.search</field>
+  <field name="model">student.info</field>
+  <field name="arch" type="xml">
+    <search string="" >
+      <!-- Add your fields here -->
+      <field name = "name"/>
+            <field name = "lnmae"/>
+            <field name = "class_grade"/>
+           <field name = "gender" widget="radio"/>
+            <field name = "roll_id"/>
+    </search>
+  </field>
+</record>
+<!-- model.name action window -->
+<record id="model_name_action" model="ir.actions.act_window">
+  <field name="name">STUDENT.action</field>
+  <field name="res_model">student.info</field>
+  <field name="view_mode">tree,form</field>
+  <field name="view_type">form</field>
+  <field name="help" type="html">
+    <p class="oe_view_nocontent_create">
+      <!-- Add Text Here -->
+    </p>
+    <p>
+      <!-- More details about what a user can do with this object will be OK --> 
+    </p>
+  </field>
+</record>
+
+<!-- This Menu Item must have a parent and an action -->
+
+<menuitem id="student_info_main_menu" name="student"  sequence="1"/>
+
+<menuitem id="student_info_sub_menu" name="student menu" parent="student_info_main_menu" action="model_name_action" sequence="1"/>
+<!-- This Menu Item must have a parent and an action -->
+<menuitem id="student School_menu_act" name="Student School" parent="student_info_sub_menu" action="model_name_action" sequence="1"/>
+<!--to create drop down list used id of child menuitem -->
+
+<!-- This Menu Item must have a parent and an action -->
+<menuitem id="Student Hostel_menu_act" name="Student Hostel" parent="student_info_main_menu" action="model_name_action" sequence="1"/>
+ <!-- This Menu Item must have a parent and an action -->
+ 
+<menuitem id="sales_menu_act" name="Sales Form" parent="student_info_main_menu" action="sale.view_order_form" sequence=""/> 
+ 
+  </data>
+  
+</odoo>

@@ -1,0 +1,35 @@
+<odoo>
+<data>
+<record id="sale_view_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+             <xpath expr="//field[@name='payment_term_id']" position="before">
+                <field name="name"/>  
+                <field name="last_name"/>  
+    
+                </xpath>
+                </field>
+</record>
+
+<!-- model.name action window -->
+<record id="model_name_action" model="ir.actions.act_window">
+    <field name="name">sales.order.action</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">sale.order</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+    <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+            <!-- Add Text Here -->
+        </p><p>
+            <!-- More details about what a user can do with this object will be OK --> 
+        </p>
+    </field>
+</record>
+
+
+</data>
+</odoo>
