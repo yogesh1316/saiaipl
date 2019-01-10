@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sales_orders_forms_123" model="ir.ui.view">
+            <field name="name">sale.order</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="revise_name"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="tax_line_id" widget="many2many_tags" options="{'no_create': True}" attrs="{'invisible':[('tax_group_chkbox','=',False)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="revise_order_checkbox"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="tax_group_chkbox"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="replace">
+                    <field name='order_id' invisible="1"/>
+                    <field name="tax_id" widget="many2many_tags" options="{'no_create': True}" domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]"/>
+                </xpath>
+                <xpath expr="//form[@class='o_sale_order']//sheet//notebook//page" position="after">
+                    <page string="Revise Order" write="false">
+                        <field name="sale_line">
+                            <tree string="" create="false" edit="false" write="false" delete="false">
+                                <field name="revise_name" string="Revise Order"/>
+                                <field name="name" string="Quotation"/>
+                                <field name="date_order" string="Quotation Date"/>
+                                <field name="partner_id"/>
+                                <field name="user_id"/>
+                                <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+                                <field name="state"/>
+                                <!-- <field name="sale_id"/>
+                                <field name="validity_date"/> 
+                                <field name="payment_term_id"/> 
+                                <field name="client_order_ref"/> 
+                                <field name="team_id"/>  
+                                <field name="fiscal_position_id"/>
+                                <field name="origin"/> 
+                                <field name="margin"/> 
+                                <field name="partner_invoice_id"/>  
+                                <field name="partner_shipping_id"/>  
+                                <field name="pricelist_id"/>
+                                <field name="amount_untaxed" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                <field name="amount_tax" widget='monetary' options="{'currency_field': 'currency_id'}"/> -->
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="sale.action_quotations" model="ir.actions.act_window">
+            <field name="name">Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state','=','draft')]</field>
+            <field name="view_id" ref="sale.view_quotation_tree"/>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+            <field name="search_view_id" ref="sale.sale_order_view_search_inherit_quotation"/>    
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Create a Quotation, the first step of a new sale.
+              </p><p>
+                Your next actions should flow efficiently: confirm the Quotation
+                to a Sales Order, then create the Invoice and collect the Payment.
+              </p>
+            </field>
+        </record>
+       
+        <!-- sale order revise form -->
+        <record id="sale_order_revise_forms" model="ir.ui.view">
+            <field name="name">sale_order_revise.view.form</field>
+            <field name="model">sale.order.revise</field>
+            <field name="arch" type="xml">
+                <form string="" create="false">
+                    <script>
+                     $(document).ready(function()
+                     {
+                     $(".modal-footer").hide();
+                     });
+                    </script>
+                    <field name="state"/>
+                    <group>
+                        <group>
+                            <field name="partner_id" readonly="True"/>
+                            <field name="partner_invoice_id" readonly="True"/>
+                            <field name="partner_shipping_id" readonly="True"/>
+                        </group>
+                        <group>
+                            <field name="validity_date" readonly="True"/>
+                            <field name="pricelist_id" readonly="True"/>
+                            <field name="payment_term_id" readonly="True"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Sale Order Line Revise">
+                            <field name="sale_orderlinerevise_line" create="0" edit="0" readonly="1" mode="tree,kanban" attrs="{'readonly': [('state', 'in', ('done','cancel'))]}" write="false">
+                                <tree string="Sale Order Line Revise" create="false" edit="false">
+                                    <field name="product_id" readonly="True" create="false" edit="false" />
+                                    <field name="layout_category_id" readonly="True" create="false" edit="false"/>
+                                    <field name="name" readonly="True" create="false" edit="false"/>
+                                    <field name="product_uom_qty" readonly="True" create="false" edit="false"/>
+                                    <field name="product_uom" readonly="True" create="false" edit="false"/>
+                                    <field name="price_unit" readonly="True" create="false" edit="false"/>
+                                    <!-- <field name="purchase_price" readonly="True" create="false" edit="false"/> -->
+                                    <field name="tax_id" readonly="True" create="false" edit="false"/>
+                                    <field name="discount" readonly="True" create="false" edit="false"/>
+                                    <field name="price_subtotal" widget='monetary' options="{'currency_field': 'currency_id'}" readonly="True" create="false" edit="false"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                                <field name="amount_untaxed" widget='monetary' options="{'currency_field': 'currency_id'}" readonly="True"/>
+                                <field name="amount_tax" widget='monetary' options="{'currency_field': 'currency_id'}" readonly="True"/>
+                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                    <label for="amount_total" readonly="True" />
+                                </div>
+                                <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}" readonly="True"/>
+                            </group>
+                        </page>
+                        <page string="Other Information" readonly="True">
+                            <group>
+                                <group string="Sales Information" name="sales_person" readonly="True">
+                                    <field name="user_id" readonly="True"/>
+                                    <field name="team_id" options="{'no_create': True}" readonly="True"/>
+                                    <field name="client_order_ref" readonly="True"/>
+                                </group>
+                                <group name="sale_pay" string="Invoicing" readonly="True">
+                                    <field name="date_order" attrs="{'invisible': [('state', 'in', ['sale', 'done', 'cancel'])]}" readonly="True"/>
+                                    <field name="fiscal_position_id" options="{'no_create': True}" readonly="True"/>
+                                </group>
+                                <group string="Reporting" name="technical" groups="base.group_no_one" readonly="True">
+                                    <field groups="base.group_no_one" name="origin" readonly="True"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+    
+
+
+
+ 
+
+
