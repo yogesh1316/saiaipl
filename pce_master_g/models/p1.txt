@@ -1,0 +1,49 @@
+ @api.multi
+    @api.constrains('hsn_no')
+    def chk_hsn_number(self):
+        for hsn in self:
+            if hsn.hsn_no and len(hsn.hsn_no)!=8:
+                raise ValidationError(_("Please Enter HSN Number Should be 8 Digit."))
+            if hsn.hsn_no
+            return True
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            @api.constrains('hsn_no')
+    def chk_hsn_number(self):
+        if self.hsn_no:
+            hsn_num_len = int(len(self.hsn_no))
+            if self.hsn_no.isdigit():
+                if hsn_num_len != 8:
+                    raise ValidationError(_('Phone number should be 8 digit'))
+            else:
+                raise ValidationError(_('Please enter only digit'))
+                
+                
+                
+                 @api.constrains('hsn_no')
+    def chk_hsn_number(self):
+        if self.hsn_no:
+            hsn_num = self.hsn_no
+            if self.hsn_no.isdigit():
+                pass
+            else:
+                raise ValidationError(_('Please enter only digit'))
+                
+                
+                
+                
+                 #HSN Number only Numeric
+    @api.constrains('hsn_no')
+    def chk_hsn_number(self):
+        if self.hsn_no.isdigit():
+            pass
+        else:
+            raise ValidationError(_('Please Enter Only Number.'))

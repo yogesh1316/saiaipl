@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--  ================================Text Master Start==================================================================== -->
+	<record id="text_master_info_form" model="ir.ui.view">
+		<field name="name">Text Master</field>
+		<field name="model">text_master.info</field>
+		<field name="arch" type="xml">
+			<form string="Text Master">
+				<sheet>
+					<group>
+						<field name="text_code" readonly="1"/>
+						<field name="text_description"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="text_master_info_tree" model="ir.ui.view">
+		<field name="name">Text Master</field>
+		<field name="model">text_master.info</field>
+		<field name="arch" type="xml">
+			<tree string="Text Master">
+				<field name="text_code"/>						
+				<field name="text_description"/>
+				<!--<field name="text_concat"/>-->
+			</tree>
+		</field>
+	</record>
+
+	<record id="text_master_info_action" model="ir.actions.act_window">
+		<field name="name">Text Master</field>
+		<field name="res_model">text_master.info</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+<!--  ================================Text Master End========================================================================= -->
+<!--  ================================Effect Master Start==================================================================== -->
+	<record id="effect_master_info_form" model="ir.ui.view">
+		<field name="name">Effect Master</field>
+		<field name="model">effect_master.info</field>
+		<field name="arch" type="xml">
+			<form string="Effect Master">
+				<sheet>
+					<group>
+						<field name="effect_code_no"/>
+						<field name="effect_description"/>
+						<!--<field name="unique_effect_description"/>-->
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="effect_master_info_tree" model="ir.ui.view">
+		<field name="name">Effect Master</field>
+		<field name="model">effect_master.info</field>
+		<field name="arch" type="xml">
+			<tree string="Effect Master">
+				<field name="effect_code_no"/>
+				<field name="effect_description"/>
+			<!--<field name="unique_effect_description"/>-->
+			</tree>
+		</field>
+	</record>
+
+	<record id="effect_master_info_action" model="ir.actions.act_window">
+		<field name="name">Effect Master</field>
+		<field name="res_model">effect_master.info</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+<!--  ================================Effect Master End========================================================================= -->
+<!-- =============================================Id Code Master Start=========================================================-->
+<record id ="id_code_master_info_form" model="ir.ui.view">
+	<field name="name">Id Code Master</field>
+	<field name="model">id_code_master.info</field>
+	<field name="arch" type="xml">
+		<form string="Id Code Master">
+			<sheet>
+				<group>
+					<field name="id_code_no"/>
+					<field name="id_code_description"/>
+					<!--<field name="unique_id_code_description"/>-->				
+				</group>
+			</sheet>
+		</form>
+	</field>
+</record>
+<record id="id_code_master_info_tree" model="ir.ui.view">
+	<field name="name">Id Code Master</field>
+	<field name="model">id_code_master.info</field>
+	<field name="arch" type="xml">
+		<tree string="Id Code Master">
+			<field name="id_code_no"/>
+			<field name="id_code_description"/>
+			<!--<field name="unique_id_code_description"/>-->		
+		</tree>
+	</field>
+</record>
+<record id="id_code_master_info_action" model="ir.actions.act_window">
+	<field name="name">Id Code Master</field>
+	<field name="res_model">id_code_master.info</field>
+	<field name="view_mode">tree,form</field>
+</record>
+<!-- =============================================Id Code Master End=========================================================-->
+<!--==============================================Make Master Start========================================================= -->
+	<record id="make_master_info_form" model="ir.ui.view">
+		<field name="name">Make Master</field>
+		<field name="model">make_master.info</field>
+		<field name="arch" type="xml">
+			<form string="Make Master">
+				<sheet>
+					<group>
+						<field name="make_no"/>
+						<field name="make_description"/>
+						<!--<field name="unique_make_description"/>-->					
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	
+	<record id="make_master_info_tree" model="ir.ui.view">
+		<field name="name">Make Master</field>
+		<field name="model">make_master.info</field>
+		<field name="arch" type="xml">
+			<tree string="Make Master">
+				<field name="make_no"/>
+				<field name="make_description"/>
+				<!--<field name="unique_make_description"/>-->					
+			</tree>
+		</field>
+	</record>
+	
+	<record id="make_master_info_action" model="ir.actions.act_window">
+		<field name="name">Make Master</field>
+		<field name="res_model">make_master.info</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+<!--==============================================Make Master End=========================================================== -->
+<!--==============================================MRP Type Master Start======================================================--> 
+<record id="mrp_type_master_info_form" model="ir.ui.view">
+	<field name="name">MRP Type Master</field>
+	<field name="model">mrp_type_master.info</field>
+	<field name="arch" type="xml">
+		<form string="MRP Type Master">
+			<sheet>
+				<group>
+					<field name="mrp_type_code"/>
+					<field name="mrp_description"/>
+				</group>
+			</sheet>
+		</form> 
+	</field>
+</record>
+
+<record id="mrp_type_master_info_tree" model="ir.ui.view">
+	<field name="name">MRP Type Master</field>
+	<field name="model">mrp_type_master.info</field>
+	<field name="arch" type="xml">
+		<tree string="MRP Type Master">
+			<field name="mrp_type_code"/>
+			<field name="mrp_description"/>
+		</tree>
+	</field>
+</record>
+
+<record id="mrp_type_master_info_action" model="ir.actions.act_window">
+	<field name="name">MRP Type Master</field>
+	<field name="res_model">mrp_type_master.info</field>
+	<field name="view_mode">tree,form</field>
+</record>
+<!--==============================================MRP Type Master End======================================================== -->
+<!--=======================================Source Master Start=============================================================== -->	
+<record id="source_master_info_form" model="ir.ui.view">
+	<field name="name">Souce Master</field>
+	<field name="model">source_master.info</field>
+	<field name="arch" type="xml">
+		<form string="Source Master">
+			<sheet>
+				<group>
+					<field name="source_code"/>
+					<field name="source_description"/>
+				</group>
+			</sheet>
+		</form>
+	</field>
+</record>
+
+<record id="source_master_info_tree" model="ir.ui.view">
+	<field name="name">Source Master</field>
+	<field name="model">source_master.info</field>
+	<field name="arch" type="xml">
+		<tree string="Source Master">
+			<field name="source_code"/>
+			<field name="source_description"/>
+		</tree>
+	</field>
+</record>
+
+<record id="source_master_info_action" model="ir.actions.act_window">
+	<field name="name">Source Master</field>
+	<field name="res_model">source_master.info</field>
+	<field name="view_mode">tree,form</field>
+</record>
+<!--=========================================Source Master End=============================================================== -->	
+<!--=========================================HSN Master Start=============================================================== -->	
+<record id="hsn_master_info_form" model="ir.ui.view">
+	<field name="name">HSN Master</field>
+	<field name="model">hsn_master.info</field>
+	<field name="arch" type="xml">
+		<form string="HSN Master">
+			<sheet>
+				<group>
+					<field name="hsn_no"/>
+					<field name="rate"/>
+					<field name="in_state_sale"/>
+					<field name="out_state_sale"/>
+					<field name="in_state_purchase"/>
+					<field name="out_state_purchase"/>					
+				</group>				
+			</sheet>
+		</form>
+	</field>
+</record>
+
+<record id="hsn_master_info_tree" model="ir.ui.view">
+	<field name="name">HSN Master</field>
+	<field name="model">hsn_master.info</field>
+	<field name="arch" type="xml">
+		<tree string="HSN Master">
+			<field name="hsn_no"/>
+			<field name="rate" />
+			<field name="in_state_sale"/>
+			<field name="out_state_sale"/>
+			<field name="in_state_purchase"/>
+			<field name="out_state_purchase"/>			
+		</tree>
+	</field>
+</record>
+
+<record id="hsn_master_info_action" model="ir.actions.act_window">
+	<field name="name">HSN Master</field>
+	<field name="res_model">hsn_master.info</field>
+	<field name="view_mode">tree,form</field>
+</record>
+
+<!--=========================================HSN Master End=============================================================== -->	
+<!--=========================================Product Template Inhe {Master's form} START====================================-->
+<record id="product_template_only_form_view_inherited" model="ir.ui.view">
+	<field name="name">product.template</field>
+	<field name="model">product.template</field>
+	<field name="inherit_id" ref="product.product_template_only_form_view"/>
+	<field name="arch" type="xml">
+		<xpath expr="//field[@name='uom_po_id']" position="after">
+			<field name="item_code_num" readonly="1"/>
+			<field name="drawing_number"/>			
+
+			<field name="text_master_id"/>
+			<field name="effect_code_description"/>
+			<field name="id_code_description"/>		
+			<field name="manufacturer"/>	
+			<field name="mrp_type" options="{'no_create': True,'no_edit': True}" widget="selection"/>				
+			<field name="source_code_master"/>
+			<!--<field name="hsn_num_master" options="{'no_create': True,'no_edit': True}" widget="selection"/>-->	
+			<field name="mf_part_no"/>
+			<field name="attach_pdf" filename="filename"/>
+			<field name="filename" invisible="1"/>			
+			<field name="batch_qty" /> <!-- attrs="{'readonly': [('mrp_type','=',1 )]}"-->
+			<field name="reorder_level" /> <!-- attrs="{'readonly': ['|',('mrp_type','=',1 ),('mrp_type','=',5 )]}"-->
+			<field name="lead_time"/>		                      
+			<field name="buyer_code" options="{'no_create': True,'no_edit': True}" widget="selection"/>		
+			<field name="bin_location"/>
+			<field name="bulk_issue_flag"/>
+			<field name="channel_flag"/>
+			<field name="sr_no_application"/>
+		</xpath>
+	<!--<xpath expr="//field[@name='name']" position="after">
+			<field name="unique_product" string="Unique Product Name"/>
+		   </xpath>-->
+	</field>
+</record>
+<!--=========================================Product Template Inhe {Master's form} END====================================-->
+	
+		
+<!-- =====================================================Masters Menu======================================================= -->
+
+	<menuitem id="pce_master_menu" name="Master"/>
+	<menuitem id="text_master_main_submenu" action="text_master_info_action" name="Text Master" parent="pce_master_menu" />
+	<menuitem id="effect_master_main_submenu" action="effect_master_info_action" name="Effect Master" parent="pce_master_menu" />
+	<menuitem id="id_code_master_main_submenu" action="id_code_master_info_action" name="Id Code Master" parent="pce_master_menu"/>
+	<menuitem id="make_master_main_submenu" action="make_master_info_action" name="Make Master" parent="pce_master_menu"/>
+	<menuitem id="mrp_type_master_main_submenu" action="mrp_type_master_info_action" name="MRP Type Master" parent="pce_master_menu"/>
+	<menuitem id="source_master_main_submenu" action="source_master_info_action" name="Source Master" parent="pce_master_menu"/> 	<menuitem id="hsn_master_main_submenu" action="hsn_master_info_action" name="HSN Master" parent="pce_master_menu"/>
+	</odoo>
